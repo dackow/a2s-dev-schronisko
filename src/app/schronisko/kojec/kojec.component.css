@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+}
+
+.zwierzaki-section {
+  flex: 1;
+}
+
+.poczekalnia-section {
+  flex: 1;
+}
+
+

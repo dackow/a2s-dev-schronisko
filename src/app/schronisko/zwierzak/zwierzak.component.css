@@ -1,0 +1,49 @@
+:host {
+    display: inline-block;
+    max-width: 150px;
+    margin: 10px;
+    text-align: center;
+    vertical-align: top;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+  .najedzenie {
+    background-color: red;
+    height: 10px;
+  }
+  
+  .najedzenie div {
+    background-color: green;
+    height: 100%;
+  }
+  
+  .property {
+    display: inline-block;
+    font-size: 10px;
+    margin: 4px;
+    color: grey;
+  }
+  
+  .zwierzak_text {
+    font-size: 10px;
+    margin: 4px;
+  }
+
+  .zwierzak_text_opis {
+    font-size: 10px;
+    margin: 4px;
+    font-style: italic;
+  }
+
+  .property.active {
+    color: white;
+  }
+
+  .zwierzak_background {
+    background-color: rgba(50, 127, 86, 0.575); /* Set the background color */
+    padding: 15%;
+    border-radius: 5px; 
+  }

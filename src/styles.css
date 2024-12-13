@@ -1,0 +1,12 @@
+body {
+    color:white;
+    font-family: Helvetica, sans-serif;
+    background-image: url('/assets/grass_2.jpg');
+}
+
+.section-name {
+    text-align: center;
+    background-color: rgb(39, 149, 57);
+    margin: 15px;
+    color: white;
+  }

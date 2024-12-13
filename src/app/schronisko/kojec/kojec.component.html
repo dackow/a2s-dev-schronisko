@@ -1,0 +1,10 @@
+<div class="zwierzaki-section">
+  <h3 class="section-name">Kojec</h3>
+  @for (zwierzak of zwierzaki; track zwierzak){
+  <app-zwierzak [zwierzak]="zwierzak"></app-zwierzak>
+  }
+</div>
+
+<div class="poczekalnia-section">
+  <app-poczekalnia></app-poczekalnia>
+</div>

@@ -1,0 +1,14 @@
+<h3 class="section-name">Poczekalnia</h3>
+
+<div>
+@for(odwiedzajacy of odwiedzajacy; track odwiedzajacy){
+    <app-odwiedzajacy [odwiedzajacy]="odwiedzajacy" [isSelected]="selectedOdwiedzajacy === odwiedzajacy">
+        @if (selectedOdwiedzajacy == odwiedzajacy) {
+            <button class="select-button" (click)="select(null)">Odznacz</button>
+        }
+        @else {
+            <button class="select-button" (click)="select(odwiedzajacy)">Wybierz</button>
+        }
+    </app-odwiedzajacy>
+}
+</div>

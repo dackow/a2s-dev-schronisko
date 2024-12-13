@@ -1,0 +1,14 @@
+:host {
+    display: inline-block;
+    max-width: 120px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+
+  .selected-odwiedzajacy {
+    border: 2px solid red;
+  }

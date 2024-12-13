@@ -1,0 +1,17 @@
+<div class="zwierzak_background">
+<h4>{{zwierzak.nazwa}}</h4>
+<div class="images">
+    <img [src]="zwierzak.imageUrl" alt="{{zwierzak.nazwa}}">
+</div>
+<div class="zwierzak_text_opis">{{zwierzak.opis}}</div>
+<div class="zwierzak_text">Wiek: {{zwierzak.wiek}}</div>
+
+<div class="zwierzak_text">Rasa: {{zwierzak.rasa}}</div>
+
+<div class="property" [class.active]="zwierzak.szczepienie">Szczepienie</div>
+
+
+<div class="najedzenie" [title]="'Najedzenie ' + zwierzak.najedzenie + '%1'">
+    <div [style.width.%]="zwierzak.najedzenie"></div>
+</div>
+</div>

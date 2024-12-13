@@ -1,33 +1,113 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ZwierzakComponent } from '../zwierzak/zwierzak.component';
 import { Zwierzak } from '../zwierzak';
 import { Kotek } from '../kotek';
 import { Piesek } from '../piesek';
 import { PoczekalniaComponent } from '../poczekalnia/poczekalnia.component';
-
+import { Odwiedzajacy } from '../odwiedzajacy';
+import { ProdukcjaZwierzakowComponent } from "../produkcja-zwierzakow/produkcja-zwierzakow.component";
 
 @Component({
   selector: 'app-kojec',
   standalone: true,
-  imports: [ZwierzakComponent, PoczekalniaComponent],
+  imports: [ZwierzakComponent, PoczekalniaComponent, ProdukcjaZwierzakowComponent],
   templateUrl: './kojec.component.html',
-  styleUrl: './kojec.component.css'
+  styleUrl: './kojec.component.css',
 })
-export class KojecComponent implements OnInit{
-  ngOnInit(): void {
-    const kotek1 = new Kotek("Marek", "assets/kotki/kot1.jpg", 3, "Kotek żyje na 5 lat", "dachowiec", true, 50, new Date(2022, 1, 1));
-    const kotek2 = new Kotek("Krzysztof", "assets/kotki/kot2.jpg", 3, "Kotek lubi dzieci", "dachowiec", true, 75, new Date(2023, 11, 1));
-    const kotek3 = new Kotek("Józef", "assets/kotki/kot3.jpg", 3, "Kot-domator", "super-rasa", true, 13, new Date(2024, 10, 10));
+export class KojecComponent implements OnInit {
+  wezZwierzaka(zwierzak: Zwierzak) {
+    if (zwierzak.odwiedzajacy) {
+      alert('Zwierzak jest już pod czyjaś opieką');
+    } else {
+      if(this.selectedOdwiedzajacy)
+      {
+        zwierzak.odwiedzajacy = this.selectedOdwiedzajacy;
+        this.poczekalnia.usunOdwiedzajacego(this.selectedOdwiedzajacy)
+      }
+    }
+  }
 
-    const piesek1 = new Piesek("Shadow", "assets/pieski/pies1.jpg", 3, "Własność prywatna", "kundelek", true, 50, new Date(2022, 7, 1));
-    const piesek2 = new Piesek("Maniek", "assets/pieski/pies2.jpg", 3, "Genialny dożek", "shi-tsu", true, 50, new Date(2019, 7, 2)); 
-    const piesek3 = new Piesek("Lassie", "assets/pieski/pies3.jpg", 3, "Dobry obrońca", "doberman", true, 50, new Date(2021, 12, 11));
+  zwrocZwierzaka(zwierzak: Zwierzak) {
+    if (!zwierzak.odwiedzajacy) {
+      alert('Zwierzak nie jest pod opieką');
+    } else {
+      //oddaj odwiedzającego :D 
+      this.poczekalnia.dodajOdwiedzajacego(zwierzak.odwiedzajacy);
+      zwierzak.odwiedzajacy = null;
+    }
+  }
+
+
+  ngOnInit(): void {
+    const kotek1 = new Kotek(
+      'Marek',
+      'assets/kotki/kot1.jpg',
+      3,
+      'Kotek żyje na 5 lat',
+      'dachowiec',
+      true,
+      50,
+      new Date(2022, 1, 1)
+    );
+    const kotek2 = new Kotek(
+      'Krzysztof',
+      'assets/kotki/kot2.jpg',
+      3,
+      'Kotek lubi dzieci',
+      'dachowiec',
+      true,
+      75,
+      new Date(2023, 11, 1)
+    );
+    const kotek3 = new Kotek(
+      'Józef',
+      'assets/kotki/kot3.jpg',
+      3,
+      'Kot-domator',
+      'super-rasa',
+      true,
+      13,
+      new Date(2024, 10, 10)
+    );
+
+    const piesek1 = new Piesek(
+      'Shadow',
+      'assets/pieski/pies1.jpg',
+      3,
+      'Własność prywatna',
+      'kundelek',
+      true,
+      50,
+      new Date(2022, 7, 1)
+    );
+    const piesek2 = new Piesek(
+      'Maniek',
+      'assets/pieski/pies2.jpg',
+      3,
+      'Genialny dożek',
+      'shi-tsu',
+      true,
+      50,
+      new Date(2019, 7, 2)
+    );
+    const piesek3 = new Piesek(
+      'Lassie',
+      'assets/pieski/pies3.jpg',
+      3,
+      'Dobry obrońca',
+      'doberman',
+      true,
+      50,
+      new Date(2021, 12, 11)
+    );
 
     this.zwierzaki.push(kotek1, kotek2, kotek3, piesek1, piesek2, piesek3);
-    
   }
   zwierzaki: Zwierzak[] = [];
+  selectedOdwiedzajacy: Odwiedzajacy | null = null;
+  @ViewChild(PoczekalniaComponent) poczekalnia!: PoczekalniaComponent;
 
-
-    
+  setSelectedOdwiedzajacy(odwiedzajacy: Odwiedzajacy | null) {
+    this.selectedOdwiedzajacy = odwiedzajacy;
+  }
 }

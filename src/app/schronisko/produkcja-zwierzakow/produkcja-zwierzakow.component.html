@@ -1,0 +1,36 @@
+<h3 class="section-name">Produkcja zwierzaków</h3>
+<div class="produkcja-form">
+  <h3>Zamów nowe zwierzaki</h3>
+
+  <form [formGroup]="form" (ngSubmit)="zamowZwierzaki()">
+    <div class="control-group">
+
+      <label for="rodzaj">Rodzaj zwierzaka:</label>
+
+      <select id="rodzaj" [formControl]="form.controls.rodzaj">
+        <option value="">Wybierz rodzaj</option>
+
+        @for(rodzaj of rodzajeZwierzakow; track rodzaj) {
+        <option [value]="rodzaj.value">{{ rodzaj.label }}</option>
+        }
+      </select>
+      @if (form.controls.rodzaj.invalid && form.controls.rodzaj.touched) {
+      <span class="error">Wybierz rodzaj zwierzaka</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="ilosc">Ilość:</label>
+
+      <input
+        type="number"
+        [formControl]="form.controls.ilosc"/>
+
+        @if (form.controls.ilosc.invalid && form.controls.ilosc.touched) {
+        <span class="error">Podaj ilość zwierzakó (1-5)</span>
+        }
+    </div>
+
+    <button type="submit" [disabled]="!form.valid">Zamów</button>
+  </form>
+</div>

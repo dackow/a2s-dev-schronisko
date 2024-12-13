@@ -1,10 +1,20 @@
 <div class="zwierzaki-section">
   <h3 class="section-name">Kojec</h3>
   @for (zwierzak of zwierzaki; track zwierzak){
-  <app-zwierzak [zwierzak]="zwierzak"></app-zwierzak>
+  <app-zwierzak [zwierzak]="zwierzak">
+    @if (zwierzak.odwiedzajacy) {
+    <button (click)="zwrocZwierzaka(zwierzak)">Zwróć zwierzaka</button>
+    } @else if (selectedOdwiedzajacy) {
+    <button (click)="wezZwierzaka(zwierzak)">Weź zwierzaka</button>
+    }
+  </app-zwierzak>
   }
 </div>
 
 <div class="poczekalnia-section">
-  <app-poczekalnia></app-poczekalnia>
+  <app-poczekalnia
+    (selected)="setSelectedOdwiedzajacy($event)"
+  ></app-poczekalnia>
 </div>
+
+<app-produkcja-zwierzakow></app-produkcja-zwierzakow>

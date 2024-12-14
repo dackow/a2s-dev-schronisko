@@ -1,4 +1,4 @@
-# A2sDev
+# Based on project made during [Angular in Space](https://angular-in-space.pl/) training 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
 

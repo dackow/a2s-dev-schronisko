@@ -1,7 +1,12 @@
-<div class="zwierzak_background">
+<div [class]="zwierzak.odwiedzajacy ? 'zwierzak_wypozyczony_background' : 'zwierzak_background'">
 <h4>{{zwierzak.nazwa}}</h4>
-<div class="images">
-    <img [src]="zwierzak.imageUrl" alt="{{zwierzak.nazwa}}">
+<div class="image-container">
+    <img [src]="zwierzak.imageUrl" alt="{{zwierzak.nazwa}}" class="main-image">
+    @if (zwierzak.odwiedzajacy) {
+      <div class="visitor-badge">
+        <img [src]="zwierzak.odwiedzajacy.imageUrl" alt="{{zwierzak.odwiedzajacy.fullName}}">
+      </div>
+    }
 </div>
 <div class="zwierzak_text_opis">{{zwierzak.opis}}</div>
 <div class="zwierzak_text">Wiek: {{zwierzak.wiek}}</div>

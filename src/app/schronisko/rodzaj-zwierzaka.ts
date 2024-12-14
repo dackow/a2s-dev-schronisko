@@ -1,4 +1,4 @@
 export enum RodzajZwierzaka {
-    Kotek,
-    Piesek
+    Kotek = "0",
+    Piesek = "1"
 }

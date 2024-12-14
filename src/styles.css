@@ -1,12 +1,21 @@
 body {
-    color:white;
-    font-family: Helvetica, sans-serif;
-    background-image: url('/assets/grass_2.jpg');
+  color: white;
+  font-family: Helvetica, sans-serif;
+  background-image: url("/assets/grass_2.jpg");
 }
 
 .section-name {
-    text-align: center;
-    background-color: rgb(39, 149, 57);
-    margin: 15px;
-    color: white;
-  }
+  text-align: center;
+  background-color: rgb(39, 149, 57);
+  margin: 15px;
+  color: white;
+}
+
+.section-container {
+  background-color: rgb(128, 207, 132);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+}

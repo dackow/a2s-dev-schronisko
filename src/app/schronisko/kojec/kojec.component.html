@@ -1,8 +1,18 @@
+<div class="section-container">
+
 <div class="zwierzaki-section">
   <h3 class="section-name">Kojec</h3>
+  <p>Tutaj znajdują się zwierzaki, które sąaktualne w schronisku</p>
   @for (zwierzak of zwierzaki; track zwierzak){
+    @if(!zwierzak){
+      <span>Brak zwierzaków 1</span>
+    }
   <app-zwierzak [zwierzak]="zwierzak">
-    @if (zwierzak.odwiedzajacy) {
+    @if(!zwierzak){
+      <span>Brak zwierzaków 2</span>
+    }
+
+    @if (zwierzak.odwiedzajacy !== null) {
     <button (click)="zwrocZwierzaka(zwierzak)">Zwróć zwierzaka</button>
     } @else if (selectedOdwiedzajacy) {
     <button (click)="wezZwierzaka(zwierzak)">Weź zwierzaka</button>
@@ -10,11 +20,16 @@
   </app-zwierzak>
   }
 </div>
+</div>
 
-<div class="poczekalnia-section">
+
+<div class="section-container">
+<div class="poczekalnia-section">  
   <app-poczekalnia
     (selected)="setSelectedOdwiedzajacy($event)"
   ></app-poczekalnia>
 </div>
+</div>
 
-<app-produkcja-zwierzakow></app-produkcja-zwierzakow>
+<app-produkcja-zwierzakow (wyprodukowanyZwierzak)="zwierzaki.push($event)"></app-produkcja-zwierzakow>
+

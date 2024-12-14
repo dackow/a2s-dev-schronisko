@@ -1,36 +1,42 @@
-<h3 class="section-name">Produkcja zwierzaków</h3>
-<div class="produkcja-form">
-  <h3>Zamów nowe zwierzaki</h3>
+<div class="produkcja-container">
 
-  <form [formGroup]="form" (ngSubmit)="zamowZwierzaki()">
-    <div class="control-group">
+  <h2>Produkcja zwierzaków</h2>
+  <p>Zamów nowe zwierzaki</p>
 
-      <label for="rodzaj">Rodzaj zwierzaka:</label>
-
-      <select id="rodzaj" [formControl]="form.controls.rodzaj">
+  <form [formGroup]="form" (ngSubmit)="zamowZwierzaki()" class="produkcja-form">
+    <div class="form-group">
+      <label for="rodzaj_zwierzaka">Rodzaj zwierzaka:</label>
+      <select
+        id="rodzaj_zwierzaka"
+        class="form-control"
+        [formControl]="form.controls.rodzaj_zwierzaka">
         <option value="">Wybierz rodzaj</option>
-
         @for(rodzaj of rodzajeZwierzakow; track rodzaj) {
         <option [value]="rodzaj.value">{{ rodzaj.label }}</option>
         }
       </select>
-      @if (form.controls.rodzaj.invalid && form.controls.rodzaj.touched) {
-      <span class="error">Wybierz rodzaj zwierzaka</span>
+      @if (form.controls.rodzaj_zwierzaka.invalid && form.controls.rodzaj_zwierzaka.touched) {
+        <span class="error">Wybierz rodzaj zwierzaka</span>
       }
     </div>
 
     <div class="form-group">
       <label for="ilosc">Ilość:</label>
-
       <input
+        id="ilosc"
         type="number"
+        class="form-control"
+        min="1"
+        max="5"
         [formControl]="form.controls.ilosc"/>
-
-        @if (form.controls.ilosc.invalid && form.controls.ilosc.touched) {
-        <span class="error">Podaj ilość zwierzakó (1-5)</span>
-        }
+      @if (form.controls.ilosc.invalid && form.controls.ilosc.touched) {
+        <span class="error">Podaj ilość zwierzaków (1-5)</span>
+      }
     </div>
 
-    <button type="submit" [disabled]="!form.valid">Zamów</button>
+    <button type="submit" class="submit-button" [disabled]="!form.valid || isTworzenieZwierzaka">Zamów</button>
+    @if (isTworzenieZwierzaka) { 
+      <span class="info">Trwa produkcja zwierzaków... Nie przeszkadzaj :)</span>
+    } 
   </form>
 </div>

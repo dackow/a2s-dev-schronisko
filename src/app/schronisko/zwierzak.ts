@@ -1,5 +1,6 @@
 import { Odwiedzajacy } from './odwiedzajacy';
 import { Opiekun } from './opiekun';
+import { RodzajZwierzaka } from './rodzaj-zwierzaka';
 
 export class Zwierzak {
   nazwa: string;
@@ -12,6 +13,7 @@ export class Zwierzak {
   data_przyjecia: Date;
   opiekun: Opiekun | null = null;
   odwiedzajacy: Odwiedzajacy | null = null;
+  rodzaj_zwierzaka: RodzajZwierzaka | null = null;
 
   constructor(
     nazwa: string,
